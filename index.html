@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your Company | Smart Technology &amp; AI Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0f0f0f;
+    --ink-soft: #3a3a3a;
+    --ink-muted: #767676;
+    --paper: #fafaf8;
+    --paper-warm: #f4f3ef;
+    --accent: #1a5cff;
+    --accent-light: #e8eeff;
+    --accent-dark: #1040cc;
+    --rule: #e0dfd8;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 5vw; background: rgba(250,250,248,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s, box-shadow 0.3s; }
+  nav.scrolled { border-color: var(--rule); box-shadow: 0 1px 20px rgba(0,0,0,0.05); }
+  .nav-logo { font-family: var(--serif); font-size: 1.3rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--ink-soft); text-decoration: none; letter-spacing: 0.01em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { background: var(--ink); color: var(--paper) !important; padding: 0.5rem 1.2rem; border-radius: 100px; font-size: 0.85rem !important; font-weight: 500 !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--accent) !important; color: #fff !important; }
+
+  /* HERO */
+  #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 10rem 5vw 6rem; position: relative; overflow: hidden; }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--rule) 1px, transparent 1px), linear-gradient(90deg, var(--rule) 1px, transparent 1px); background-size: 60px 60px; opacity: 0.4; pointer-events: none; }
+  .hero-blob { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(26,92,255,0.08) 0%, transparent 70%); top: -200px; right: -200px; pointer-events: none; }
+  .hero-inner { position: relative; max-width: 860px; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s 0.1s forwards; }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .hero-h1 { font-family: var(--serif); font-size: clamp(2.6rem, 6vw, 5rem); line-height: 1.08; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s 0.25s forwards; }
+  .hero-h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--ink-soft); max-width: 600px; font-weight: 300; line-height: 1.7; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
+  .hero-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.55s forwards; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--ink); color: var(--paper); padding: 0.9rem 2rem; border-radius: 100px; font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: background 0.25s, transform 0.2s; letter-spacing: 0.01em; }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+  .btn-primary svg { transition: transform 0.2s; }
+  .btn-primary:hover svg { transform: translateX(3px); }
+  .hero-scroll { margin-top: 5rem; display: flex; align-items: center; gap: 0.75rem; font-size: 0.8rem; color: var(--ink-muted); letter-spacing: 0.05em; text-transform: uppercase; opacity: 0; animation: fadeUp 0.8s 0.7s forwards; }
+  .hero-scroll-line { width: 40px; height: 1px; background: var(--ink-muted); }
+
+  /* HERO SERVICE CARDS */
+  .hero-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; opacity: 0; animation: fadeUp 0.8s 0.65s forwards; }
+  .hero-card { background: rgba(255,255,255,0.7); border: 1px solid var(--rule); border-radius: 14px; padding: 1.25rem 1.5rem; backdrop-filter: blur(8px); text-decoration: none; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; cursor: pointer; }
+  .hero-card:hover { border-color: var(--accent); box-shadow: 0 4px 24px rgba(26,92,255,0.1); transform: translateY(-2px); }
+  .hero-card-title { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.35rem; }
+  .hero-card-body { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.6; }
+  @media (max-width: 700px) { .hero-cards { grid-template-columns: 1fr; } }
+
+  /* SHARED */
+  section { padding: 7rem 5vw; }
+  .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .section-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1.5rem; }
+  .section-body { font-size: 1.05rem; color: var(--ink-soft); font-weight: 300; max-width: 640px; line-height: 1.75; }
+  .divider { width: 100%; height: 1px; background: var(--rule); }
+
+  /* SERVICES */
+  #services { background: var(--paper-warm); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 4rem; border: 1.5px solid var(--rule); border-radius: 16px; overflow: hidden; }
+  .service-card { background: var(--paper); padding: 2.5rem 2rem; border-right: 1.5px solid var(--rule); transition: background 0.25s; position: relative; }
+  .service-card:last-child { border-right: none; }
+  .service-card:hover { background: #fff; }
+  .service-card:hover .service-arrow { opacity: 1; transform: translate(3px,-3px); }
+  .service-num { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1.25rem; }
+  .service-card h3 { font-family: var(--serif); font-size: 1.35rem; color: var(--ink); margin-bottom: 0.75rem; line-height: 1.25; }
+  .service-card p { font-size: 0.875rem; color: var(--ink-muted); line-height: 1.7; }
+  .service-arrow { position: absolute; top: 2rem; right: 2rem; font-size: 1rem; color: var(--accent); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
+
+  /* MOBILE APP SECTION */
+  #mobile-apps { background: var(--paper); overflow: hidden; }
+  .mobile-section-inner { display: grid; grid-template-columns: 520px 1fr; gap: 6rem; align-items: center; margin-top: 4rem; }
+
+  /* Diagram */
+  .mobile-diagram { position: relative; display: flex; align-items: center; justify-content: center; height: 500px; }
+
+  /* Phone */
+  .phone-wrap { position: relative; z-index: 10; width: 128px; height: 256px; background: #111; border-radius: 30px; box-shadow: 0 0 0 1.5px #2a2a2a, 0 40px 80px rgba(0,0,0,0.22), 0 8px 32px rgba(26,92,255,0.12); display: flex; flex-direction: column; align-items: center; padding: 14px 10px 12px; overflow: hidden; }
+  .phone-notch { width: 46px; height: 9px; background: #1c1c1c; border-radius: 0 0 8px 8px; margin-bottom: 10px; flex-shrink: 0; }
+  .phone-screen { width: 100%; flex: 1; background: linear-gradient(155deg, #0c1830 0%, #0a0a0a 100%); border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 12px 8px; }
+  .phone-app-icon { width: 46px; height: 46px; background: linear-gradient(135deg, #1a5cff 0%, #7b5fff 100%); border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 6px 20px rgba(26,92,255,0.45); }
+  .phone-label { font-family: var(--sans); font-size: 8.5px; font-weight: 600; color: rgba(255,255,255,0.75); letter-spacing: 0.04em; text-align: center; }
+  .phone-sub-label { font-size: 6.5px; color: rgba(255,255,255,0.3); text-align: center; }
+  .phone-bar { width: 68%; height: 3px; background: rgba(255,255,255,0.07); border-radius: 2px; margin-top: 6px; }
+  .phone-bar-inner { height: 100%; background: var(--accent); border-radius: 2px; animation: barPulse 2.8s ease-in-out infinite; }
+  @keyframes barPulse { 0%,100%{width:40%} 50%{width:82%} }
+
+  /* Platform badges */
+  .platform-badges { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 11; }
+  .platform-badge { display: flex; align-items: center; gap: 5px; background: var(--paper); border: 1px solid var(--rule); border-radius: 20px; padding: 5px 11px; font-size: 0.7rem; font-weight: 600; color: var(--ink-soft); box-shadow: 0 2px 12px rgba(0,0,0,0.08); white-space: nowrap; }
+
+  /* Capability nodes */
+  .cap-node { position: absolute; z-index: 5; background: var(--paper); border: 1px solid var(--rule); border-radius: 14px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); animation: nodePulse 3s ease-in-out infinite; white-space: nowrap; }
+  .cap-node:nth-child(3) { animation-delay: 0.5s; }
+  .cap-node:nth-child(4) { animation-delay: 1.0s; }
+  .cap-node:nth-child(5) { animation-delay: 1.5s; }
+  .cap-node:nth-child(6) { animation-delay: 2.0s; }
+  .cap-node:nth-child(7) { animation-delay: 2.5s; }
+  .cap-node:nth-child(8) { animation-delay: 3.0s; }
+  @keyframes nodePulse { 0%,100%{box-shadow:0 4px 20px rgba(0,0,0,0.07)} 50%{box-shadow:0 6px 28px rgba(26,92,255,0.14)} }
+  .cap-node-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+  .cap-node-text h5 { font-size: 0.72rem; font-weight: 600; color: var(--ink); line-height: 1.2; }
+  .cap-node-text p { font-size: 0.62rem; color: var(--ink-muted); }
+
+  /* Absolute positions for 6 nodes around phone center */
+  .node-barcode  { top: 30px;  left: 10px; }
+  .node-api      { top: 30px;  right: 10px; }
+  .node-database { top: 50%;   left: 0;   transform: translateY(-50%); }
+  .node-notifs   { top: 50%;   right: 0;  transform: translateY(-50%); }
+  .node-ai       { bottom: 80px; left: 10px; }
+  .node-cloud    { bottom: 80px; right: 10px; }
+
+  /* SVG connector lines */
+  .diagram-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 3; overflow: visible; }
+
+  /* Feature list */
+  .mobile-features { display: flex; flex-direction: column; }
+  .mobile-feature { display: flex; align-items: flex-start; gap: 1.25rem; padding: 1.5rem 0; border-bottom: 1px solid var(--rule); }
+  .mobile-feature:first-child { border-top: 1px solid var(--rule); }
+  .mobile-feature-icon { width: 40px; height: 40px; background: var(--accent-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .mobile-feature-text h4 { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem; }
+  .mobile-feature-text p { font-size: 0.83rem; color: var(--ink-muted); line-height: 1.65; }
+
+  /* ABOUT */
+  #about { background: var(--paper); }
+
+  /* WHY */
+  #why { background: var(--ink); }
+  #why .section-label { color: #7ba3ff; }
+  #why .section-title { color: #fff; }
+  #why .section-body { color: rgba(255,255,255,0.55); }
+  .why-item { display: flex; align-items: flex-start; gap: 1.25rem; background: rgba(255,255,255,0.03); }
+  .why-item:hover { background: rgba(255,255,255,0.06); }
+  .why-check { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .why-check svg { width: 12px; height: 12px; }
+  .why-item-text h4 { font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 0.25rem; }
+  .why-item-text p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+  @media (max-width: 700px) {
+    .why-items-grid { grid-template-columns: 1fr !important; }
+    .why-item { border-left: none !important; }
+  }
+
+  /* PROCESS */
+  #process { background: var(--paper-warm); }
+  .process-steps { display: flex; flex-direction: column; gap: 0; margin-top: 4rem; max-width: 800px; }
+  .process-step { display: grid; grid-template-columns: 80px 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--rule); align-items: start; }
+  .process-step:first-child { border-top: 1px solid var(--rule); }
+  .process-num { font-family: var(--serif); font-size: 2.5rem; color: var(--rule); line-height: 1; transition: color 0.3s; user-select: none; }
+  .process-step:hover .process-num { color: var(--accent); }
+  .process-content h3 { font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
+  .process-content p { font-size: 0.9rem; color: var(--ink-muted); line-height: 1.7; }
+
+  /* CONTACT */
+  #contact { background: var(--paper); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 2rem; }
+  .contact-detail { display: flex; align-items: flex-start; gap: 1rem; }
+  .contact-detail-icon { width: 40px; height: 40px; background: var(--paper-warm); border: 1px solid var(--rule); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .contact-detail-text span { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.2rem; }
+  .contact-detail-text a, .contact-detail-text p { font-size: 0.95rem; color: var(--ink); text-decoration: none; font-weight: 500; }
+  .contact-detail-text a:hover { color: var(--accent); }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft); }
+  .form-group input, .form-group textarea, .form-group select { font-family: var(--sans); font-size: 0.9rem; color: var(--ink); background: var(--paper-warm); border: 1px solid var(--rule); border-radius: 8px; padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; appearance: none; width: 100%; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-submit { margin-top: 0.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .form-submit-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: #fff; padding: 0.9rem 2rem; border-radius: 100px; font-size: 0.95rem; font-weight: 500; border: none; cursor: pointer; font-family: var(--sans); transition: background 0.25s, transform 0.2s; text-decoration: none; }
+  .form-submit-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .form-note { font-size: 0.78rem; color: var(--ink-muted); }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: rgba(255,255,255,0.35); padding: 3rem 5vw 5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: var(--serif); font-size: 1.1rem; color: #fff; text-decoration: none; }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+  .footer-copy { font-size: 0.78rem; }
+
+  /* ABOUT CTA BAND */
+  .about-cta-band { margin-top: 2.5rem; margin-bottom: 0.5rem; }
+  .about-cta-band-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; background: var(--accent-light); border: 1px solid rgba(26,92,255,0.18); border-radius: 14px; padding: 1.75rem 2rem; flex-wrap: wrap; }
+  .about-cta-band-title { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
+  .about-cta-band-sub { font-size: 0.85rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; max-width: 480px; }
+  .about-cta-band-note { font-size: 0.75rem; color: var(--ink-muted); margin-top: 0.6rem; padding-left: 2rem; }
+
+  /* CLICKABLE NODE TOOLTIP */
+  .cap-node { cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s; }
+  .cap-node:hover { border-color: var(--accent); transform: translateY(-2px) scale(1.03); }
+  .cap-node.active { border-color: var(--accent); box-shadow: 0 6px 28px rgba(26,92,255,0.18); }
+
+  /* FLOATING CTA BUTTON */
+  .float-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 150; display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; }
+  .float-cta-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--accent); color: #fff; padding: 0.85rem 1.5rem; border-radius: 100px; font-family: var(--sans); font-size: 0.88rem; font-weight: 600; text-decoration: none; box-shadow: 0 4px 24px rgba(26,92,255,0.35); transition: background 0.2s, transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer; }
+  .float-cta-btn:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(26,92,255,0.4); }
+  .float-cta-btn svg { flex-shrink: 0; }
+  .float-cta-pulse { width: 10px; height: 10px; border-radius: 50%; background: #22c55e; animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+  @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.5)} 50%{box-shadow:0 0 0 6px rgba(34,197,94,0)} }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* HAMBURGER */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.3s; }
+
+  @media (max-width: 1060px) {
+    .mobile-section-inner { grid-template-columns: 1fr; }
+    .mobile-diagram { margin-bottom: 2rem; }
+  }
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { border-right: none; border-bottom: 1.5px solid var(--rule); }
+    .service-card:last-child { border-bottom: none; }
+    .process-steps { max-width: 100%; }
+    .form-row { grid-template-columns: 1fr; }
+    .why-items-grid { grid-template-columns: 1fr !important; }
+    .why-item { border-left: none !important; }
+    #contact { padding: 0 !important; }
+    #contact > .reveal { grid-template-columns: 1fr !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; }
+    #contact > .reveal > div:first-child { padding: 3rem 2rem; }
+    #contact > .reveal > div:last-child { padding: 3rem 2rem; }
+  }
+  @media (max-width: 600px) {
+    html, body { overflow-x: hidden; max-width: 100%; }
+    section { padding: 4rem 5vw; }
+    .hero-cards { grid-template-columns: 1fr; }
+    .process-step { grid-template-columns: auto 1fr; gap: 1rem; }
+    .process-num { font-size: 0.85rem !important; }
+    .mobile-diagram { height: 380px; }
+    .cap-node-text p { display: none; }
+    .about-lad-cards { grid-template-columns: 1fr !important; }
+    .about-lad-cards > div { border-right: none !important; border-bottom: 1px solid var(--rule); }
+    .about-lad-cards > div:last-child { border-bottom: none; }
+    footer { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding-bottom: 6rem; }
+    .footer-links { flex-direction: column; gap: 0.75rem; }
+    .float-cta { bottom: 1rem; right: 1rem; }
+    .float-cta-btn { font-size: 0.8rem; padding: 0.75rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">LADModelAI</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#mobile-apps">Mobile</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Free Consultation</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-inner">
+    <h1 class="hero-h1">We Help Businesses Automate,<br>Modernize, and <em>Build for the Future</em></h1>
+    <p class="hero-sub">From AI workflow automation to cloud modernization and app development — we partner with businesses to replace outdated processes with technology that scales, reducing costs and freeing your team to focus on what matters most.</p>
+    <div class="hero-cards">
+      <a href="#services" class="hero-card">
+        <div class="hero-card-title">AI &amp; Workflow</div>
+        <div class="hero-card-body">Your team's time is too valuable to spend on work that can be automated.</div>
+      </a>
+      <a href="#services" class="hero-card">
+        <div class="hero-card-title">Legacy &amp; Cloud</div>
+        <div class="hero-card-body">Old systems are slowing you down and costing more than you think.</div>
+      </a>
+      <a href="#services" class="hero-card">
+        <div class="hero-card-title">App Development</div>
+        <div class="hero-card-body">Disconnected tools and manual handoffs don't fix themselves — we build the software that ties it all together.</div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label reveal">What We Do</div>
+  <h2 class="section-title reveal">Three ways we modernize<br>your operations.</h2>
+  <p class="section-body reveal">Every engagement is tailored to your specific workflows, goals, and constraints.</p>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="service-arrow">↗</div>
+      <div class="service-num">01</div>
+      <h3>AI &amp; Workflow Consulting</h3>
+      <p>We analyze how your business works from end to end to identify where AI automation can have the biggest impact — replacing inefficient manual processes with systems that help you scale without adding headcount.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-arrow">↗</div>
+      <div class="service-num">02</div>
+      <h3>Legacy Modernization &amp; Cloud</h3>
+      <p>We migrate legacy systems to modern, cloud-native architectures — replacing outdated infrastructure, integrating APIs, and optimizing for speed, security, and cost.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-arrow">↗</div>
+      <div class="service-num">03</div>
+      <h3>App Development</h3>
+      <p>We build mobile apps and websites that bring your modernized workflows to life — giving your team and customers a fast, intuitive interface to the systems we help you build.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label reveal">How It Works</div>
+  <h2 class="section-title reveal">The LAD engagement model.</h2>
+  <div class="process-steps">
+
+    <div class="reveal" style="padding:2.5rem 0;border-top:1px solid var(--rule);">
+      <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;">Learn</p>
+      <div style="border-left:2px solid var(--accent-light);padding-left:1.5rem;display:flex;flex-direction:column;">
+        <div style="padding:0 0 1.25rem 0;border-bottom:1px solid var(--rule);">
+          <h3 style="font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:0.4rem;">01 — Discovery</h3>
+          <p style="font-size:0.9rem;color:var(--ink-muted);line-height:1.7;">We take time to deeply understand your systems, current workflows, and core business challenges before recommending a single solution.</p>
+        </div>
+        <div style="padding:1.25rem 0 0 0;">
+          <h3 style="font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:0.4rem;">02 — Assessment</h3>
+          <p style="font-size:0.9rem;color:var(--ink-muted);line-height:1.7;">We analyze your workflows in detail, identify bottlenecks, inefficiencies, and high-value opportunities for automation and modernization.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="padding:2.5rem 0;border-top:1px solid var(--rule);">
+      <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;">Architect</p>
+      <div style="border-left:2px solid var(--accent-light);padding-left:1.5rem;">
+        <div style="padding:0;">
+          <h3 style="font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:0.4rem;">03 — Strategy</h3>
+          <p style="font-size:0.9rem;color:var(--ink-muted);line-height:1.7;">We develop a clear modernization roadmap with prioritized objectives, milestones, and measurable success criteria tailored to your business.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="padding:2.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+      <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;">Deploy</p>
+      <div style="border-left:2px solid var(--accent-light);padding-left:1.5rem;display:flex;flex-direction:column;">
+        <div style="padding:0 0 1.25rem 0;border-bottom:1px solid var(--rule);">
+          <h3 style="font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:0.4rem;">04 — Implementation</h3>
+          <p style="font-size:0.9rem;color:var(--ink-muted);line-height:1.7;">We deploy cloud, app, and AI solutions efficiently and securely, keeping you informed at every stage with transparent progress reporting.</p>
+        </div>
+        <div style="padding:1.25rem 0 0 0;">
+          <h3 style="font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:0.4rem;">05 — Support</h3>
+          <p style="font-size:0.9rem;color:var(--ink-muted);line-height:1.7;">We provide ongoing optimization, monitoring, and maintenance to ensure long-term success, and evolve solutions as your business grows.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MOBILE APPS -->
+<section id="mobile-apps">
+  <div class="section-label reveal">Mobile Development</div>
+  <h2 class="section-title reveal">Native iOS and Android apps<br>built for real-world operations.</h2>
+  <p class="section-body reveal">We build powerful mobile applications that connect your team, your data, and your customers in one seamless experience.</p>
+
+  <div class="mobile-section-inner" style="grid-template-columns:1fr;max-width:680px;margin-left:auto;margin-right:auto;">
+
+    <div class="mobile-diagram reveal" style="height:520px;">
+      <svg class="diagram-svg" id="diagramSvg" viewBox="0 0 680 520" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#1a5cff;stop-opacity:0.45"/>
+            <stop offset="100%" style="stop-color:#7b5fff;stop-opacity:0.15"/>
+          </linearGradient>
+        </defs>
+        <line id="l1" stroke="url(#lineGrad)" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <line id="l2" stroke="url(#lineGrad)" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <line id="l3" stroke="url(#lineGrad)" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <line id="l4" stroke="url(#lineGrad)" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <line id="l5" stroke="url(#lineGrad)" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <line id="l6" stroke="url(#lineGrad)" stroke-width="1.2" stroke-dasharray="5 4"/>
+      </svg>
+
+      <div class="phone-wrap" id="phoneEl">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-app-icon">📱</div>
+          <div class="phone-label">Your App</div>
+          <div class="phone-sub-label">iOS &amp; Android</div>
+          <div class="phone-bar"><div class="phone-bar-inner"></div></div>
+        </div>
+      </div>
+
+      <div class="platform-badges">
+        <div class="platform-badge">
+          <svg width="11" height="13" viewBox="0 0 11 13" fill="none"><path d="M8.7 6.9C8.69 5.65 9.7 5.06 9.74 5.04 9.12 4.13 8.16 4.02 7.83 4.01c-0.63-0.06-1.23 0.37-1.55 0.37s-0.81-0.36-1.34-0.35c-0.68 0.01-1.32 0.4-1.68 1.01C2.47 6.28 2.95 8.47 3.76 9.65c0.41 0.59 0.9 1.26 1.55 1.24 0.63-0.03 0.87-0.4 1.62-0.4s0.97 0.4 1.63 0.39c0.67-0.01 1.09-0.6 1.5-1.19 0.47-0.68 0.67-1.35 0.68-1.38C10.73 8.3 8.71 7.6 8.7 6.9zM7.38 3.08C7.73 2.66 7.96 2.08 7.89 1.5 7.39 1.52 6.79 1.82 6.42 2.23 6.09 2.6 5.81 3.18 5.89 3.76 6.44 3.8 7.02 3.49 7.38 3.08z" fill="#111"/></svg>
+          iOS
+        </div>
+        <div class="platform-badge">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 3L6 6l5-3M6 6v5.5M1 3v6L6 11.5M11 3v6L6 11.5" stroke="#3ddc84" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Android
+        </div>
+      </div>
+
+      <div class="cap-node node-barcode" id="n1" onclick="showNodeDetail(this,'n1')" title="Click to learn more">
+        <div class="cap-node-icon" style="background:#fff5e6;">📷</div>
+        <div class="cap-node-text"><h5>Barcode Scanning</h5><p>Real-time lookup</p></div>
+      </div>
+      <div class="cap-node node-api" id="n2" onclick="showNodeDetail(this,'n2')" title="Click to learn more">
+        <div class="cap-node-icon" style="background:#e8eeff;">🔌</div>
+        <div class="cap-node-text"><h5>3rd-Party APIs</h5><p>Any integration</p></div>
+      </div>
+      <div class="cap-node node-database" id="n3" onclick="showNodeDetail(this,'n3')" title="Click to learn more">
+        <div class="cap-node-icon" style="background:#edfff0;">🗄️</div>
+        <div class="cap-node-text"><h5>Databases</h5><p>Live data sync</p></div>
+      </div>
+      <div class="cap-node node-notifs" id="n4" onclick="showNodeDetail(this,'n4')" title="Click to learn more">
+        <div class="cap-node-icon" style="background:#fff0f6;">🔔</div>
+        <div class="cap-node-text"><h5>Notifications</h5><p>Push and in-app</p></div>
+      </div>
+      <div class="cap-node node-ai" id="n5" onclick="showNodeDetail(this,'n5')" title="Click to learn more">
+        <div class="cap-node-icon" style="background:#f4eeff;">🤖</div>
+        <div class="cap-node-text"><h5>AI Integration</h5><p>On-device and cloud</p></div>
+      </div>
+      <div class="cap-node node-cloud" id="n6" onclick="showNodeDetail(this,'n6')" title="Click to learn more">
+        <div class="cap-node-icon" style="background:#e8f5ff;">☁️</div>
+        <div class="cap-node-text"><h5>Cloud Backend</h5><p>Scalable infra</p></div>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:0.8rem;color:var(--ink-muted);margin-top:1rem;letter-spacing:0.03em;">Tap any capability to learn more</p>
+
+  </div>
+
+  <div id="nodeDetail" style="display:none;margin-top:1.5rem;background:var(--paper-warm);border:1px solid var(--rule);border-radius:16px;padding:1.5rem 2rem;max-width:520px;margin-left:auto;margin-right:auto;position:relative;animation:fadeUp 0.25s ease forwards;">
+    <button onclick="closeNodeDetail()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--ink-muted);line-height:1;padding:2px 6px;" title="Close">✕</button>
+    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+      <div id="detailIcon" style="width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;"></div>
+      <strong id="detailTitle" style="font-size:1rem;font-weight:600;color:var(--ink);"></strong>
+    </div>
+    <p id="detailBody" style="font-size:0.875rem;color:var(--ink-muted);line-height:1.7;margin:0;"></p>
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label reveal">Who We Are</div>
+  <h2 class="section-title reveal">Expert engineers and strategists<br>built for the Digital Age.</h2>
+  <p class="section-body reveal">LADModelAI was built around a simple belief: the best technology engagements start with learning how you work, architecting the right solution, and deploying it with precision. We are a team of experienced engineers and strategists with backgrounds spanning top public and private sector organizations — with deep expertise in cloud architecture, AI and workflow automation, and app development.</p>
+  <p class="section-body reveal" style="margin-top:1rem;">Outdated systems and missed automation opportunities cost companies more than they realize. We step in to close that gap, designing scalable solutions that turn technology into a genuine competitive edge.</p>
+
+  <div class="reveal about-lad-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3rem;border:1px solid var(--rule);border-radius:16px;overflow:hidden;max-width:760px;">
+    <div style="padding:1.75rem;border-right:1px solid var(--rule);">
+      <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Learn</p>
+      <p style="font-size:0.925rem;color:var(--ink-muted);line-height:1.65;">We take time to deeply understand how your business operates before recommending anything.</p>
+    </div>
+    <div style="padding:1.75rem;border-right:1px solid var(--rule);">
+      <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Architect</p>
+      <p style="font-size:0.925rem;color:var(--ink-muted);line-height:1.65;">We design the right solution for your specific goals, constraints, and opportunities.</p>
+    </div>
+    <div style="padding:1.75rem;">
+      <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Deploy</p>
+      <p style="font-size:0.925rem;color:var(--ink-muted);line-height:1.65;">We build and ship with precision, then stay engaged to make sure it keeps working.</p>
+    </div>
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+<!-- WHY -->
+<section id="why">
+  <div>
+    <div class="section-label reveal">Why Choose Us</div>
+    <h2 class="section-title reveal">A different kind of technology partner.</h2>
+    <p class="section-body reveal" style="color:rgba(255,255,255,0.5);">We combine deep technical expertise with a business-first mindset, so solutions always serve growth, not just IT checklists.</p>
+  </div>
+  <div class="why-items-grid reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem;border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;">
+    <!-- Column 1 -->
+    <div class="why-item" style="padding:1.5rem 2rem;">
+      <div class="why-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="why-item-text"><h4>AI-Focused Transformation</h4><p>Practical AI implementation that delivers measurable business outcomes.</p></div>
+    </div>
+    <!-- Column 2 -->
+    <div class="why-item" style="padding:1.5rem 2rem;border-left:1px solid rgba(255,255,255,0.08);">
+      <div class="why-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="why-item-text"><h4>Scalable Solutions</h4><p>Built to grow with you, from startup velocity to enterprise scale.</p></div>
+    </div>
+    <div class="why-item" style="padding:1.5rem 2rem;border-top:1px solid rgba(255,255,255,0.08);">
+      <div class="why-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="why-item-text"><h4>Modern Cloud Expertise</h4><p>AWS, Azure, and GCP with battle-tested architectures for any scale.</p></div>
+    </div>
+    <div class="why-item" style="padding:1.5rem 2rem;border-top:1px solid rgba(255,255,255,0.08);border-left:1px solid rgba(255,255,255,0.08);">
+      <div class="why-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="why-item-text"><h4>Cost Optimization</h4><p>Every decision is weighed against ROI. Efficiency is built in, not bolted on.</p></div>
+    </div>
+    <div class="why-item" style="padding:1.5rem 2rem;border-top:1px solid rgba(255,255,255,0.08);">
+      <div class="why-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="why-item-text"><h4>Partnership Focused</h4><p>We build lasting partnerships, not just deliver projects. Your success is our success.</p></div>
+    </div>
+    <div class="why-item" style="padding:1.5rem 2rem;border-top:1px solid rgba(255,255,255,0.08);border-left:1px solid rgba(255,255,255,0.08);">
+      <div class="why-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="why-item-text"><h4>End-to-End Implementation</h4><p>Strategy through deployment through support. No handoffs, no gaps.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:5rem 5vw;background:var(--paper);">
+  <div class="reveal" style="border:1px solid var(--rule);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1fr 1.4fr;min-height:600px;box-shadow:0 4px 40px rgba(0,0,0,0.07);">
+
+    <!-- Left: subtle band -->
+    <div style="background:var(--ink);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;gap:2rem;">
+      <div>
+        <p style="font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#7ba3ff;margin-bottom:1rem;">Get In Touch</p>
+        <h2 style="font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.2rem);color:#fff;line-height:1.2;letter-spacing:-0.02em;margin-bottom:1rem;">Ready to modernize your technology stack?</h2>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.45);line-height:1.75;">Schedule a free 30-minute consultation. We will listen, ask the right questions, and give you a clear picture of what is possible.</p>
+      </div>
+      <p style="font-size:0.75rem;color:rgba(255,255,255,0.2);">No commitment required. We respond within one business day.</p>
+    </div>
+
+    <!-- Right: prominent form -->
+    <div style="background:var(--paper);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;">
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group"><label for="fname">First Name</label><input type="text" id="fname" placeholder="Jane" /></div>
+          <div class="form-group"><label for="lname">Last Name</label><input type="text" id="lname" placeholder="Smith" /></div>
+        </div>
+        <div class="form-group"><label for="email">Work Email</label><input type="email" id="email" placeholder="jane@company.com" /></div>
+        <div class="form-group"><label for="company">Company</label><input type="text" id="company" placeholder="Acme Inc." /></div>
+        <div class="form-group">
+          <label for="service">Area of Interest</label>
+          <select id="service">
+            <option value="" disabled selected>Select a service</option>
+            <option>AI &amp; Workflow Consulting</option>
+            <option>Legacy Modernization &amp; Cloud</option>
+            <option>App Development</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group"><label for="message">Tell Us About Your Challenge</label><textarea id="message" placeholder="Describe your current situation and what you are hoping to improve"></textarea></div>
+        <div class="form-submit">
+          <button class="form-submit-btn" onclick="handleSubmit(event)">
+            Submit
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form-note">We respond within one business day.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FLOATING CTA -->
+<div class="float-cta">
+  <a href="#contact" class="float-cta-btn">
+    <span class="float-cta-pulse"></span>
+    Book a Free Consultation
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#hero" class="footer-logo">LADModelAI</a>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#mobile-apps">Mobile</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="terms_of_service.html">Terms of Service</a></li>
+  </ul>
+  <p class="footer-copy">2025 LADModelAI. All rights reserved.</p>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+
+  // Reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Mobile menu
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    if (!links) return;
+    links.style.cssText = links.style.display === 'flex'
+      ? ''
+      : 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--paper);padding:1.5rem 5vw;border-bottom:1px solid var(--rule);gap:1rem;box-shadow:0 8px 30px rgba(0,0,0,0.08);';
+  }
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target;
+    btn.textContent = 'Message Sent!';
+    btn.style.background = '#16a34a';
+    setTimeout(() => {
+      btn.innerHTML = 'Book a Free Consultation <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      btn.style.background = '';
+    }, 3000);
+  }
+
+  // Node detail data
+  const nodeData = {
+    n1: { icon: '📷', bg: '#fff5e6', title: 'Barcode and QR Scanning',      body: 'Built-in camera scanning for inventory management, asset tracking, patient check-ins, and point-of-sale workflows.' },
+    n2: { icon: '🔌', bg: '#e8eeff', title: 'Third-Party API Connections',   body: 'Seamless integrations with payment processors, ERP systems, CRMs, shipping providers, and any REST or GraphQL API.' },
+    n3: { icon: '🗄️', bg: '#edfff0', title: 'Database Sync and Offline Mode',body: 'Real-time and offline-capable data access so your team stays productive even without a reliable connection.' },
+    n4: { icon: '🔔', bg: '#fff0f6', title: 'Push and In-App Notifications',  body: 'Targeted alerts for task updates, approvals, shipment events, and critical business triggers delivered instantly.' },
+    n5: { icon: '🤖', bg: '#f4eeff', title: 'AI-Powered Features',            body: 'Embedded AI for smart search, image recognition, conversational assistants, and predictive recommendations.' },
+    n6: { icon: '☁️', bg: '#e8f5ff', title: 'Scalable Cloud Backend',         body: 'Hosted on AWS, Azure, or GCP with authentication, file storage, and APIs that scale from 10 users to 10,000.' },
+  };
+
+  let currentNode = null;
+
+  function showNodeDetail(el, id) {
+    const d = nodeData[id];
+    if (!d) return;
+    if (currentNode === id) { closeNodeDetail(); return; }
+    currentNode = id;
+    document.querySelectorAll('.cap-node').forEach(n => n.classList.remove('active'));
+    el.classList.add('active');
+    const card = document.getElementById('nodeDetail');
+    document.getElementById('detailIcon').textContent = d.icon;
+    document.getElementById('detailIcon').style.background = d.bg;
+    document.getElementById('detailTitle').textContent = d.title;
+    document.getElementById('detailBody').textContent = d.body;
+    card.style.display = 'block';
+    setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
+  }
+
+  function closeNodeDetail() {
+    currentNode = null;
+    document.getElementById('nodeDetail').style.display = 'none';
+    document.querySelectorAll('.cap-node').forEach(n => n.classList.remove('active'));
+  }
+
+  // Draw SVG connector lines
+  function drawLines() {
+    const svg = document.getElementById('diagramSvg');
+    const phone = document.getElementById('phoneEl');
+    const diagram = phone ? phone.closest('.mobile-diagram') : null;
+    if (!svg || !phone || !diagram) return;
+    const dRect = diagram.getBoundingClientRect();
+    const pRect = phone.getBoundingClientRect();
+    const cx = pRect.left - dRect.left + pRect.width / 2;
+    const cy = pRect.top  - dRect.top  + pRect.height / 2;
+    const vb = svg.getAttribute('viewBox').split(' ');
+    const vw = parseFloat(vb[2]);
+    const vh = parseFloat(vb[3]);
+    const sx = vw / dRect.width;
+    const sy = vh / dRect.height;
+    ['n1','n2','n3','n4','n5','n6'].forEach((nid, i) => {
+      const node = document.getElementById(nid);
+      const line = document.getElementById('l' + (i + 1));
+      if (!node || !line) return;
+      const nr = node.getBoundingClientRect();
+      line.setAttribute('x1', cx * sx);
+      line.setAttribute('y1', cy * sy);
+      line.setAttribute('x2', (nr.left - dRect.left + nr.width  / 2) * sx);
+      line.setAttribute('y2', (nr.top  - dRect.top  + nr.height / 2) * sy);
+    });
+  }
+
+  window.addEventListener('load',   () => setTimeout(drawLines, 250));
+  window.addEventListener('resize', drawLines);
+</script>
+</body>
+</html>
