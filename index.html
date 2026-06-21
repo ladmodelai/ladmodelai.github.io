@@ -3,7 +3,30 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Your Company | Smart Technology &amp; AI Solutions</title>
+
+<!-- Primary Meta -->
+<title>LADModelAI | AI Automation, Cloud Modernization &amp; App Development</title>
+<meta name="description" content="LADModelAI helps mid-sized businesses automate workflows, modernize legacy systems, and build high-performance apps. Learn, Architect, Deploy." />
+<meta name="keywords" content="AI automation, workflow automation, cloud modernization, legacy system migration, app development, iOS app, Android app, technology consulting, AI consulting" />
+<meta name="author" content="LADModelAI" />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph (Facebook, LinkedIn) -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.ladmodelai.com/" />
+<meta property="og:title" content="LADModelAI | AI Automation, Cloud Modernization &amp; App Development" />
+<meta property="og:description" content="We help mid-sized businesses save time, cut costs, and scale through AI automation, cloud modernization, and custom app development." />
+<meta property="og:image" content="https://www.ladmodelai.com/ladmodelai_company_logo.png" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://www.ladmodelai.com/" />
+<meta name="twitter:title" content="LADModelAI | AI Automation, Cloud Modernization &amp; App Development" />
+<meta name="twitter:description" content="We help mid-sized businesses save time, cut costs, and scale through AI automation, cloud modernization, and custom app development." />
+<meta name="twitter:image" content="https://www.ladmodelai.com/ladmodelai_company_logo.png" />
+
+<!-- Canonical -->
+<link rel="canonical" href="https://www.ladmodelai.com/" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
@@ -56,7 +79,7 @@
 
   /* HERO SERVICE CARDS */
   .hero-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; opacity: 0; animation: fadeUp 0.8s 0.65s forwards; }
-  .hero-card { background: rgba(255,255,255,0.7); border: 1px solid var(--rule); border-radius: 14px; padding: 1.25rem 1.5rem; backdrop-filter: blur(8px); text-decoration: none; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; cursor: pointer; }
+  .hero-card { background: rgba(255,255,255,0.7); border: 1px solid var(--rule); border-radius: 14px; padding: 1.25rem 1.5rem; backdrop-filter: blur(8px); transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
   .hero-card:hover { border-color: var(--accent); box-shadow: 0 4px 24px rgba(26,92,255,0.1); transform: translateY(-2px); }
   .hero-card-title { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.35rem; }
   .hero-card-body { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.6; }
@@ -161,17 +184,19 @@
   .lad-timeline-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; position: relative; margin-top: 4rem; }
   .lad-timeline-items::before { content: ''; position: absolute; top: 16px; left: 16.666%; right: 16.666%; height: 2px; background: var(--rule); z-index: 0; }
   .lad-timeline-item { display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1; }
-  .lad-timeline-dot { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 700; margin-bottom: 1.25rem; flex-shrink: 0; }
-  .lad-timeline-item h3 { font-family: var(--serif); font-size: 1.4rem; color: var(--ink); margin-bottom: 0.6rem; }
+  .lad-timeline-dot { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; flex-shrink: 0; }
+  .lad-timeline-item h3 { font-family: var(--serif); font-size: 1.4rem; color: var(--ink); margin-bottom: 0.5rem; }
   .lad-timeline-item p { font-size: 0.9rem; color: var(--ink-muted); line-height: 1.7; max-width: 300px; }
 
   @media (max-width: 700px) {
-    .lad-timeline-items { grid-template-columns: 1fr; gap: 2.5rem; }
+    .lad-timeline-items { grid-template-columns: 1fr; gap: 0; }
     .lad-timeline-items::before { display: none; }
-    .lad-timeline-item { flex-direction: row; align-items: flex-start; text-align: left; gap: 1.25rem; position: relative; padding-bottom: 0.5rem; }
-    .lad-timeline-item::after { content: ''; position: absolute; left: 15px; top: 32px; bottom: -2rem; width: 2px; background: var(--rule); }
-    .lad-timeline-item:last-child::after { display: none; }
-    .lad-timeline-dot { margin-bottom: 0; }
+    .lad-timeline-item { flex-direction: row; align-items: flex-start; text-align: left; gap: 1.25rem; position: relative; padding: 1.75rem 0; border-bottom: 1px solid var(--rule); }
+    .lad-timeline-item:first-child { border-top: 1px solid var(--rule); }
+    .lad-timeline-item:last-child { border-bottom: none; }
+    .lad-timeline-dot { margin-bottom: 0; margin-top: 2px; }
+    .lad-timeline-item-text { display: flex; flex-direction: column; gap: 0.4rem; }
+    .lad-timeline-item h3 { margin-bottom: 0; }
     .lad-timeline-item p { max-width: none; }
   }
 
@@ -211,9 +236,11 @@
   .about-cta-band-sub { font-size: 0.85rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; max-width: 480px; }
   .about-cta-band-note { font-size: 0.75rem; color: var(--ink-muted); margin-top: 0.6rem; padding-left: 2rem; }
 
-  /* CLICKABLE NODE TOOLTIP */
   .cap-node { cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s; }
-  .cap-node:hover { border-color: var(--accent); transform: translateY(-2px) scale(1.03); }
+  .cap-node:hover { border-color: var(--accent); }
+  .cap-node:not(.node-database):not(.node-notifs):hover { transform: translateY(-2px) scale(1.03); }
+  .node-database:hover { transform: translateY(calc(-50% - 2px)) scale(1.03); }
+  .node-notifs:hover { transform: translateY(calc(-50% - 2px)) scale(1.03); }
   .cap-node.active { border-color: var(--accent); box-shadow: 0 6px 28px rgba(26,92,255,0.18); }
 
   /* FLOATING CTA BUTTON */
@@ -285,18 +312,18 @@
     <h1 class="hero-h1">We Help Businesses Automate,<br>Modernize, and <em>Build for the Future</em></h1>
     <p class="hero-sub">From AI workflow automation to cloud modernization and app development — we partner with businesses to replace outdated processes with technology that scales, reducing costs and freeing your team to focus on what matters most.</p>
     <div class="hero-cards">
-      <a href="#services" class="hero-card">
+      <div class="hero-card">
         <div class="hero-card-title">AI &amp; Workflow Automation</div>
         <div class="hero-card-body">Your team's time is too valuable to spend on work that can be automated.</div>
-      </a>
-      <a href="#services" class="hero-card">
+      </div>
+      <div class="hero-card">
         <div class="hero-card-title">Cloud &amp; Legacy Modernization</div>
         <div class="hero-card-body">Old systems are slowing you down and costing more than you think.</div>
-      </a>
-      <a href="#services" class="hero-card">
+      </div>
+      <div class="hero-card">
         <div class="hero-card-title">App Development</div>
         <div class="hero-card-body">Disconnected tools and manual handoffs don't fix themselves — we build the software that ties it all together.</div>
-      </a>
+      </div>
     </div>
 
   </div>
@@ -342,18 +369,24 @@
   <div class="lad-timeline-items reveal">
     <div class="lad-timeline-item">
       <div class="lad-timeline-dot">1</div>
-      <h3>Learn</h3>
-      <p>We study your operations — mapping your workflows, identifying inefficiencies, and pinpointing exactly where AI automation or modernization can make the biggest difference.</p>
+      <div class="lad-timeline-item-text">
+        <h3>Learn</h3>
+        <p>We study your operations — mapping your workflows, identifying inefficiencies, and pinpointing exactly where AI automation or modernization can make the biggest difference.</p>
+      </div>
     </div>
     <div class="lad-timeline-item">
       <div class="lad-timeline-dot">2</div>
-      <h3>Architect</h3>
-      <p>We translate what we've learned into a concrete plan — the right mix of AI automation, cloud infrastructure, or app development tailored to your goals, timeline, and budget.</p>
+      <div class="lad-timeline-item-text">
+        <h3>Architect</h3>
+        <p>We translate what we've learned into a concrete plan — the right mix of AI automation, cloud infrastructure, or app development tailored to your goals, timeline, and budget.</p>
+      </div>
     </div>
     <div class="lad-timeline-item">
       <div class="lad-timeline-dot">3</div>
-      <h3>Deploy</h3>
-      <p>We build and ship the solution with full transparency, then stay engaged through ongoing support and optimization to make sure it keeps delivering value as your business evolves.</p>
+      <div class="lad-timeline-item-text">
+        <h3>Deploy</h3>
+        <p>We build and ship the solution with full transparency, then stay engaged through ongoing support and optimization to make sure it keeps delivering value as your business evolves.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -435,7 +468,7 @@
 
   </div>
 
-  <div id="nodeDetail" style="display:none;margin-top:1.5rem;background:var(--paper-warm);border:1px solid var(--rule);border-radius:16px;padding:1.5rem 2rem;max-width:520px;margin-left:auto;margin-right:auto;position:relative;animation:fadeUp 0.25s ease forwards;">
+  <div id="nodeDetail" style="display:none;margin-top:0.5rem;background:var(--paper-warm);border:1px solid var(--rule);border-radius:16px;padding:1.25rem 1.5rem;max-width:520px;margin-left:auto;margin-right:auto;position:relative;animation:fadeUp 0.25s ease forwards;">
     <button onclick="closeNodeDetail()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--ink-muted);line-height:1;padding:2px 6px;" title="Close">✕</button>
     <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
       <div id="detailIcon" style="width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;"></div>
