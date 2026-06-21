@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Terms of Service | LADModelAI</title>
+<meta name="description" content="Terms of Service for LADModelAI — AI automation, cloud modernization, and app development consulting." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
@@ -22,22 +23,45 @@
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; font-size: 16px; }
-  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
-  nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 5vw; border-bottom: 1px solid var(--rule); }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 5vw; border-bottom: 1px solid var(--rule); position: sticky; top: 0; background: rgba(250,250,248,0.95); backdrop-filter: blur(12px); z-index: 100; }
   .nav-logo { font-family: var(--serif); font-size: 1.3rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
   .nav-back { font-size: 0.875rem; font-weight: 500; color: var(--ink-soft); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
   .nav-back:hover { color: var(--accent); }
 
-  main { max-width: 720px; margin: 0 auto; padding: 6rem 5vw; }
+  main { max-width: 760px; margin: 0 auto; padding: 5rem 5vw 6rem; }
   .page-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
   h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.75rem; }
-  .last-updated { font-size: 0.8rem; color: var(--ink-muted); margin-bottom: 3rem; }
-  .placeholder-notice { background: var(--paper-warm); border: 1px solid var(--rule); border-radius: 12px; padding: 2rem 2.5rem; text-align: center; }
-  .placeholder-notice p { font-size: 0.95rem; color: var(--ink-muted); line-height: 1.7; }
-  .placeholder-notice strong { color: var(--ink); }
+  .last-updated { font-size: 0.82rem; color: var(--ink-muted); margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--rule); }
 
-  footer { border-top: 1px solid var(--rule); padding: 2rem 5vw; text-align: center; font-size: 0.78rem; color: var(--ink-muted); margin-top: 4rem; }
+  .toc { background: var(--paper-warm); border: 1px solid var(--rule); border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 3rem; }
+  .toc-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 1rem; }
+  .toc ol { padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .toc ol li a { font-size: 0.875rem; color: var(--accent); text-decoration: none; }
+  .toc ol li a:hover { text-decoration: underline; }
+
+  .section { margin-bottom: 3rem; }
+  .section h2 { font-family: var(--serif); font-size: 1.4rem; color: var(--ink); margin-bottom: 1rem; padding-top: 1rem; }
+  .section p { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 1rem; }
+  .section p:last-child { margin-bottom: 0; }
+  .section ul, .section ol { padding-left: 1.5rem; margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .section ul li, .section ol li { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.75; }
+  .section strong { color: var(--ink); font-weight: 600; }
+
+  .highlight-box { background: var(--accent-light); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1.25rem 0; }
+  .highlight-box p { font-size: 0.875rem; color: var(--ink-soft); margin: 0; }
+
+  footer { border-top: 1px solid var(--rule); padding: 2rem 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; background: var(--ink); }
+  .footer-logo { font-family: var(--serif); font-size: 1.1rem; color: #fff; text-decoration: none; }
+  .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+  .footer-back { font-size: 0.78rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+  .footer-back:hover { color: #fff; }
+
+  @media (max-width: 600px) {
+    main { padding: 3rem 5vw 4rem; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
 </style>
 </head>
 <body>
@@ -53,15 +77,219 @@
 <main>
   <p class="page-label">Legal</p>
   <h1>Terms of Service</h1>
-  <p class="last-updated">Last updated: May 2026</p>
+  <p class="last-updated">Last updated: June 2026 &nbsp;·&nbsp; Effective date: June 2026</p>
 
-  <div class="placeholder-notice">
-    <p><strong>This page is under construction.</strong><br />Our full Terms of Service will be published here shortly. If you have any questions in the meantime, please reach out to us directly.</p>
+  <div class="toc">
+    <p class="toc-title">Table of Contents</p>
+    <ol>
+      <li><a href="#acceptance">Acceptance of Terms</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#eligibility">Eligibility</a></li>
+      <li><a href="#accounts">Client Responsibilities</a></li>
+      <li><a href="#engagements">Engagements and Project Agreements</a></li>
+      <li><a href="#payment">Payment Terms</a></li>
+      <li><a href="#ip">Intellectual Property</a></li>
+      <li><a href="#confidentiality">Confidentiality</a></li>
+      <li><a href="#data">Data and Privacy</a></li>
+      <li><a href="#thirdparty">Third-Party Services</a></li>
+      <li><a href="#warranties">Warranties and Disclaimers</a></li>
+      <li><a href="#liability">Limitation of Liability</a></li>
+      <li><a href="#indemnification">Indemnification</a></li>
+      <li><a href="#termination">Termination</a></li>
+      <li><a href="#governing">Governing Law</a></li>
+      <li><a href="#changes">Changes to These Terms</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
   </div>
+
+  <div class="section" id="acceptance">
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing our website, submitting an inquiry, entering into a project agreement, or otherwise engaging with LADModelAI ("Company," "we," "us," or "our"), you ("Client," "you," or "your") agree to be bound by these Terms of Service ("Terms"). Please read them carefully before proceeding.</p>
+    <p>If you are entering into these Terms on behalf of a company or other legal entity, you represent that you have the authority to bind that entity. If you do not have such authority, or if you do not agree with these Terms, you must not use our services.</p>
+    <div class="highlight-box">
+      <p>Your continued use of our services constitutes your acceptance of any updates to these Terms. We encourage you to review this page periodically.</p>
+    </div>
+  </div>
+
+  <div class="section" id="services">
+    <h2>2. Services</h2>
+    <p>LADModelAI provides technology consulting, AI automation, software development, and cloud modernization services, including but not limited to:</p>
+    <ul>
+      <li>AI strategy, workflow analysis, and intelligent automation implementation</li>
+      <li>Cloud infrastructure design, migration, and optimization</li>
+      <li>Legacy system modernization and API integration</li>
+      <li>Mobile application development for iOS and Android platforms</li>
+      <li>Website and web application development</li>
+      <li>Technical assessments, modernization roadmaps, and strategic advisory</li>
+      <li>Ongoing support, monitoring, and system optimization</li>
+    </ul>
+    <p>The specific scope, deliverables, timelines, and pricing for any engagement are defined in a separate Statement of Work ("SOW") or project agreement executed between you and LADModelAI. In the event of any conflict between these Terms and a specific SOW, the SOW shall govern with respect to that engagement.</p>
+  </div>
+
+  <div class="section" id="eligibility">
+    <h2>3. Eligibility</h2>
+    <p>Our services are intended for businesses and professional entities. By engaging with LADModelAI, you represent and warrant that:</p>
+    <ul>
+      <li>You are at least 18 years of age</li>
+      <li>You have the legal capacity to enter into binding contracts</li>
+      <li>Your use of our services does not violate any applicable laws or regulations in your jurisdiction</li>
+      <li>Any information you provide to us is accurate, current, and complete</li>
+    </ul>
+  </div>
+
+  <div class="section" id="accounts">
+    <h2>4. Client Responsibilities</h2>
+    <p>To enable LADModelAI to deliver services effectively, you agree to:</p>
+    <ul>
+      <li>Provide accurate, complete, and timely information about your business, systems, and project requirements</li>
+      <li>Designate an authorized representative to facilitate communications, feedback, and approvals</li>
+      <li>Provide timely access to systems, documentation, and resources reasonably required for delivery</li>
+      <li>Review and respond to deliverables, questions, and milestone checkpoints in a reasonable timeframe</li>
+      <li>Maintain the confidentiality of any access credentials, project materials, or proprietary information shared with you</li>
+      <li>Notify us promptly of any unauthorized access or security concerns related to shared materials</li>
+    </ul>
+    <p>You acknowledge that delays caused by your failure to provide timely responses, approvals, or access to required resources may impact project timelines and deliverables. LADModelAI shall not be liable for delays attributable to the Client.</p>
+  </div>
+
+  <div class="section" id="engagements">
+    <h2>5. Engagements and Project Agreements</h2>
+    <p>Each client engagement begins with a discovery and assessment phase under our Learn, Architect, Deploy (LAD) framework, and is formalized through a written SOW or project agreement outlining scope, deliverables, milestones, timeline, and fees. No engagement is binding on LADModelAI until a written agreement has been signed by both parties.</p>
+    <p>Any changes to the agreed scope of work must be documented in a written change order signed by both parties. LADModelAI reserves the right to adjust timelines and fees in response to scope changes requested by the Client.</p>
+    <p>LADModelAI will use commercially reasonable efforts to deliver services in accordance with agreed timelines. However, all timelines are estimates and may be subject to change due to factors outside our reasonable control, including but not limited to third-party platform changes, Client delays, or unforeseen technical complexity.</p>
+  </div>
+
+  <div class="section" id="payment">
+    <h2>6. Payment Terms</h2>
+    <p>Fees for our services are set forth in the applicable SOW or project agreement. Unless otherwise specified in writing:</p>
+    <ul>
+      <li>Invoices are due within 30 days of the invoice date</li>
+      <li>A deposit may be required prior to the commencement of work, as specified in the SOW</li>
+      <li>Late payments may be subject to a late fee of 1.5% per month on the outstanding balance</li>
+      <li>All fees are exclusive of applicable taxes, which are the Client's sole responsibility</li>
+      <li>LADModelAI reserves the right to pause or suspend services in the event of non-payment</li>
+    </ul>
+    <p>All fees paid are non-refundable except as expressly stated in the applicable SOW or as required by applicable law.</p>
+  </div>
+
+  <div class="section" id="ip">
+    <h2>7. Intellectual Property</h2>
+    <p><strong>Client Materials:</strong> You retain all ownership of materials, data, systems, and content you provide to LADModelAI in connection with an engagement ("Client Materials"). You grant LADModelAI a limited, non-exclusive license to use Client Materials solely for the purpose of delivering the agreed services.</p>
+    <p><strong>Deliverables:</strong> Upon receipt of full payment, LADModelAI assigns to you all rights, title, and interest in the custom deliverables created specifically for your engagement, as defined in the applicable SOW. This includes custom code, configurations, and documentation produced exclusively for your project.</p>
+    <p><strong>Pre-existing IP and Tools:</strong> LADModelAI retains all rights to its pre-existing intellectual property, proprietary frameworks, reusable components, methodologies, AI models, tooling, and know-how ("LADModelAI IP"). To the extent any LADModelAI IP is incorporated into deliverables, LADModelAI grants you a non-exclusive, perpetual license to use such IP solely in connection with the deliverables.</p>
+    <p><strong>Open Source Components:</strong> Some deliverables may incorporate open source software, which is subject to the respective open source licenses. LADModelAI will make reasonable efforts to identify such components and their licenses upon request.</p>
+    <p><strong>Portfolio Rights:</strong> Unless expressly prohibited in writing, LADModelAI reserves the right to reference the nature and type of services provided for portfolio and marketing purposes, without disclosing confidential or proprietary Client information.</p>
+  </div>
+
+  <div class="section" id="confidentiality">
+    <h2>8. Confidentiality</h2>
+    <p>Each party agrees to keep confidential any non-public information disclosed by the other party in connection with an engagement ("Confidential Information"), and to use such information solely for the purpose of fulfilling obligations under the engagement.</p>
+    <p>Confidential Information does not include information that:</p>
+    <ul>
+      <li>Is or becomes publicly known through no fault of the receiving party</li>
+      <li>Was rightfully known to the receiving party prior to disclosure</li>
+      <li>Is independently developed by the receiving party without use of the Confidential Information</li>
+      <li>Is required to be disclosed by law, regulation, or valid court order, provided the receiving party gives reasonable prior notice</li>
+    </ul>
+    <p>These confidentiality obligations survive the termination of any engagement for a period of three (3) years.</p>
+  </div>
+
+  <div class="section" id="data">
+    <h2>9. Data and Privacy</h2>
+    <p>LADModelAI is committed to handling all data responsibly and in compliance with applicable data protection laws. Any personal data processed in connection with our services is handled in accordance with our Privacy Policy.</p>
+    <p>You are responsible for ensuring that any data you share with LADModelAI has been collected lawfully and that you have obtained any necessary consents required under applicable data protection regulations, including but not limited to GDPR, CCPA, or other relevant frameworks.</p>
+    <p>In engagements involving AI automation or data processing systems, you retain ownership and responsibility for the underlying data. LADModelAI will process such data only as instructed and will implement reasonable technical safeguards appropriate to the sensitivity of the data involved.</p>
+    <p>LADModelAI implements reasonable technical and organizational measures to protect data from unauthorized access, loss, or disclosure. However, no method of transmission or storage is completely secure, and we cannot guarantee absolute security.</p>
+  </div>
+
+  <div class="section" id="thirdparty">
+    <h2>10. Third-Party Services</h2>
+    <p>Our engagements may involve the use of third-party platforms, cloud providers, APIs, AI services, or software tools (collectively, "Third-Party Services"), including but not limited to Amazon Web Services, Microsoft Azure, Google Cloud Platform, and various AI and automation platforms.</p>
+    <p>LADModelAI is not responsible for the availability, performance, pricing changes, or terms of Third-Party Services. You acknowledge that:</p>
+    <ul>
+      <li>Third-Party Services are subject to their own terms of service and privacy policies</li>
+      <li>Changes to Third-Party Services may affect deliverables or require additional work outside the original scope</li>
+      <li>Any fees associated with Third-Party Services (e.g., cloud infrastructure costs, API usage fees) are your responsibility unless explicitly included in the SOW</li>
+    </ul>
+    <p>LADModelAI will make reasonable efforts to notify you of any material changes to Third-Party Services that may affect your engagement.</p>
+  </div>
+
+  <div class="section" id="warranties">
+    <h2>11. Warranties and Disclaimers</h2>
+    <p>LADModelAI warrants that it will perform services in a professional and workmanlike manner consistent with industry standards, using qualified personnel with appropriate expertise.</p>
+    <p>Except as expressly stated above, our services are provided <strong>"as is"</strong> and <strong>"as available"</strong> without warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+    <p>LADModelAI does not warrant that:</p>
+    <ul>
+      <li>Deliverables will be entirely free from defects, bugs, or errors</li>
+      <li>AI automation solutions will produce results that are fully accurate or error-free at all times</li>
+      <li>Services will meet all of your specific business requirements</li>
+      <li>Specific revenue targets, cost savings, or business outcomes will be achieved as a result of our services</li>
+      <li>Third-party platforms, APIs, or AI services integrated as part of an engagement will remain available, unchanged, or perform as expected</li>
+    </ul>
+  </div>
+
+  <div class="section" id="liability">
+    <h2>12. Limitation of Liability</h2>
+    <p>To the fullest extent permitted by applicable law, LADModelAI shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, loss of revenue, loss of data, loss of business opportunity, or business interruption, arising out of or related to these Terms or the use of our services, even if advised of the possibility of such damages.</p>
+    <p>In no event shall LADModelAI's total cumulative liability to you for any claims arising out of or related to an engagement exceed the total fees paid by you to LADModelAI in the three (3) months immediately preceding the claim giving rise to liability.</p>
+    <p>Some jurisdictions do not allow the exclusion or limitation of certain damages, so the above limitations may not apply to you in full.</p>
+  </div>
+
+  <div class="section" id="indemnification">
+    <h2>13. Indemnification</h2>
+    <p>You agree to indemnify, defend, and hold harmless LADModelAI and its officers, directors, employees, contractors, and agents from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or in any way connected with:</p>
+    <ul>
+      <li>Your breach of these Terms or any applicable SOW</li>
+      <li>Your violation of any applicable law, regulation, or third-party right</li>
+      <li>Your use or misuse of deliverables, services, or AI automation systems we build for you</li>
+      <li>Any Client Materials that infringe the intellectual property or other rights of a third party</li>
+      <li>Data you provide that is collected, processed, or stored in violation of applicable data protection laws</li>
+    </ul>
+  </div>
+
+  <div class="section" id="termination">
+    <h2>14. Termination</h2>
+    <p>Either party may terminate an engagement by providing written notice as specified in the applicable SOW. In the absence of a specific notice period, thirty (30) days written notice is required.</p>
+    <p>LADModelAI may terminate services immediately upon written notice if:</p>
+    <ul>
+      <li>You fail to make payment when due and do not cure such failure within 10 business days of written notice</li>
+      <li>You breach any material obligation under these Terms or an SOW and fail to cure such breach within 14 days of written notice</li>
+      <li>You become insolvent, make an assignment for the benefit of creditors, or become subject to bankruptcy or insolvency proceedings</li>
+      <li>Continued engagement would require LADModelAI to violate any applicable law or regulation</li>
+    </ul>
+    <p>Upon termination, you shall pay for all services rendered and expenses incurred up to the effective date of termination. Provisions of these Terms that by their nature should survive termination — including confidentiality, intellectual property, limitation of liability, and indemnification — shall survive indefinitely.</p>
+  </div>
+
+  <div class="section" id="governing">
+    <h2>15. Governing Law and Dispute Resolution</h2>
+    <p>These Terms and any disputes arising out of or related to them or our services shall be governed by and construed in accordance with the laws of the State of Connecticut, United States, without regard to its conflict of law provisions.</p>
+    <p>Before initiating any formal legal proceedings, both parties agree to attempt to resolve any dispute through good-faith negotiation for a period of at least thirty (30) days following written notice of the dispute. If the matter cannot be resolved through negotiation, the parties may pursue mediation prior to litigation.</p>
+    <p>Any legal action or proceeding arising out of or relating to these Terms shall be brought exclusively in a court of competent jurisdiction in the State of Connecticut, and both parties hereby consent to such jurisdiction and venue.</p>
+  </div>
+
+  <div class="section" id="changes">
+    <h2>16. Changes to These Terms</h2>
+    <p>LADModelAI reserves the right to update or modify these Terms at any time at our sole discretion. When we make material changes, we will update the "Last updated" date at the top of this page and make reasonable efforts to notify active clients via email or through our website.</p>
+    <p>Your continued engagement with our services following the posting of revised Terms constitutes your acceptance of the changes. If you do not agree with any updated Terms, you should discontinue use of our services and notify us in writing.</p>
+  </div>
+
+  <div class="section" id="contact">
+    <h2>17. Contact Us</h2>
+    <p>If you have any questions, concerns, or requests regarding these Terms of Service, please contact us:</p>
+    <div class="highlight-box">
+      <p><strong>LADModelAI</strong><br />
+      Email: <a href="mailto:hello@ladmodelai.com" style="color:var(--accent);">hello@ladmodelai.com</a><br />
+      Website: <a href="index.html" style="color:var(--accent);">www.ladmodelai.com</a><br />
+      State of incorporation: Connecticut, United States</p>
+    </div>
+    <p>We will make every effort to respond to your inquiry within one business day.</p>
+  </div>
+
 </main>
 
 <footer>
-  <p>2025 LADModelAI. All rights reserved.</p>
+  <a href="index.html" class="footer-logo">LADModelAI</a>
+  <a href="index.html" class="footer-back">← Back to Home</a>
+  <p class="footer-copy">2025 LADModelAI. All rights reserved.</p>
 </footer>
 
 </body>
